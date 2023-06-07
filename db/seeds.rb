@@ -1,5 +1,5 @@
 # --- ここから追加する
-restaurants = ["マクドナルド","ミスタードーナツ","スシロー"]
+restaurants = ["マクドナルド","ミスタードーナツ"]
 
 mcdonald = [
   {name:"たまごダブル",price: 460, description:"100%ビーフパティ2枚とたまご、ベーコンをゴマつきバンズでサンドし、スパイシーなソースで味付けした食べ応え抜群な一品です" },
@@ -17,6 +17,23 @@ mcdonald = [
           240  , description: "100%ビーフパティと、とろ～りとろけるチェダーチーズにぷるぷるたまごをトッピング、ケチャップとマスタードで味付けした一品。"},
           {name: "ハンバーガー"  ,price: 170 , description:"マクドナルドのおいしさの原点。香ばしく焼き上げられたビーフパティの材料には100%ビーフを使用しています。" },]
 
+mister_donuts = [
+  {name:"ポン・デ・リング",price: 154, description:"大人気のもちもち食感！" },
+  {name: "チョコファッション"  ,price: 165 , description: "ミルク感のあるサクサクした生地にチョコレートをコーティング。"},
+  {name:"エンゼルフレンチ"   ,price: 165  , description:"軽くてなめらかなホイップクリームをふわっとサンド。" },
+  {name: "シュガーレイズド"  ,price: 154 , description:"やさしい口溶けのふんわり食感。甘さ控えめ。"},
+  {name:'チョコリング', price: 165, description:'やさしい口溶けのふんわり食感。 
+    風味豊かなチョコレートをコーティング。'},
+  {name: "ストロベリーリング"  ,price:165  , description:"やさしい口溶けのふんわり食感。甘酸っぱいストロベリーチョコをコーティング。" },
+      {name: "エンゼルクリーム "  ,price: 165 , description: "軽くてなめらかなホイップクリームとふんわり口溶け食感。"},
+      {name: "ココナツチョコレート"  ,price:165  , description:"しっとり濃厚なチョコレート生地にシャリシャリのココナツをトッピング。" },
+      {name: "ハニーチュロ"  ,price: 
+        165 , description: "表面をカリッと仕上げたスペイン風ドーナツ"},
+        {name: "ドーナツポップ16個入り"  ,price:585  , description: "6種類からどのドーナツポップをつめあわせても、自由。ティータイムや子供のおやつに。単品で買うよりお得! "},
+        {name: "ホット・セイボリーパイBBQフランクフルト"  ,price:
+          242  , description: "あらびきジューシーなフランクフルトと、ハーブの香りが効いたBBQソースをサクサクのパイ生地で包んで焼き上げました"},
+          {name: "ゴールデンチョコレート"  ,price: 165 , description:"しっとり濃厚なチョコレート生地にカリカリ食感をプラス。" },]
+
 
 
           restaurants.each do |restaurant|
@@ -27,16 +44,33 @@ mcdonald = [
                   fee: 100,
                   time_required: 10,
                 )
+                
                 mcdonald.each do |product|       
                   restaurant.foods.build(
                     name: product[:name],
                     price: product[:price] ,
                     description: product[:description]
                   )
+                  restaurant.save!
+                end
+            when "ミスタードーナツ" 
+                restaurant = Restaurant.new(
+                  name: "ミスタードーナツ",
+                  fee: 150,
+                  time_required: 10,
+                )
+                
+                mister_donuts.each do |product|       
+                  restaurant.foods.build(
+                    name: product[:name],
+                    price: product[:price] ,
+                    description: product[:description]
+                  )
+                  restaurant.save!
                 end
 
               
-                restaurant.save!
+                
               end
 
 

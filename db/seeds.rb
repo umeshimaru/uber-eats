@@ -1,7 +1,50 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# --- ここから追加する
+restaurants = ["マクドナルド","ミスタードーナツ","スシロー"]
+
+mcdonald = [
+  {name:"たまごダブル",price: 460, description:"100%ビーフパティ2枚とたまご、ベーコンをゴマつきバンズでサンドし、スパイシーなソースで味付けした食べ応え抜群な一品です" },
+  {name: "マックフライポテト"  ,price: 190 , description: "外はカリッとゴールデンブラウン。中はホクホクとベイクドポテトのような食感。こだわりぬいた、マクドナルドのベストセラー。"},
+  {name:"チキンマックナゲット"   ,price: 240  , description:"外はカリッとゴールデンブラウン。中はジュワッとジューシー。絶妙の温度管理と時間で揚げられたマクドナルドの自信作です。" },
+  {name: "ビッグマック"  ,price: 450 , description:"おいしさも食べごたえもビッグなマクドナルドの人気メニュー。こだわりの100%ビーフと、特製ビッグマックソースが決め手"},
+  {name:'炙り醤油風ダブル肉厚ビーフ', price: 550, description:'2枚重ねた厚みのある100%ビーフのおいしさを、香ばしい炙り醤油風のソースが引き立てる、思わずやみつきになる一品です。'},
+  {name: "倍フィレオフィッシュ"  ,price:470  , description:"外はサクサク、中はしっとりふっくらのフィレオフィッシュ®。パティが倍で、白身魚のおいしさもボリュームアップ。" },
+      {name: "ジューシーチキン ブラックペッパー"  ,price: 440 , description: "ブラックペッパーで味付けしたサクサク衣のジューシーなチキンパティに、マヨソースとレタスをあわせたクセになる一品です。"},
+      {name: "ダブルチーズバーガー"  ,price:400  , description:"クリーミーなチーズと、香ばしく焼き上げられた100%ビーフパティを2枚も使った、マクドナルドの人気メニューのひとつ。" },
+      {name: "てりやきマックバーガー"  ,price: 
+        370 , description: "ポークパティを、日本ならではのてりやき風味に仕上げた人気メニュー。食べ応えとコクのある味わいを楽しめます。"},
+        {name: "えびフィレオ"  ,price:400  , description: "2018年にリニューアル!えび本来の歯ごたえと深い味わいが自慢のザクザクえびカツに、オーロラソースが相性抜群の自信作です。"},
+        {name: "エグチ(エッグチーズバーガー)"  ,price:
+          240  , description: "100%ビーフパティと、とろ～りとろけるチェダーチーズにぷるぷるたまごをトッピング、ケチャップとマスタードで味付けした一品。"},
+          {name: "ハンバーガー"  ,price: 170 , description:"マクドナルドのおいしさの原点。香ばしく焼き上げられたビーフパティの材料には100%ビーフを使用しています。" },]
+
+
+
+          restaurants.each do |restaurant|
+           case restaurant
+            when "マクドナルド" 
+                restaurant = Restaurant.new(
+                  name: "マクドナルド",
+                  fee: 100,
+                  time_required: 10,
+                )
+                mcdonald.each do |product|       
+                  restaurant.foods.build(
+                    name: product[:name],
+                    price: product[:price] ,
+                    description: product[:description]
+                  )
+                end
+
+              
+                restaurant.save!
+              end
+
+
+          
+           end
+
+
+        
+
+
+# --- ここまで追加する
